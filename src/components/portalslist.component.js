@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PortalDataService from '../services/portal.service'
 import { Link } from "react-router-dom"
+import { Button, List, ListItem, ListItemText } from '@material-ui/core';
 
 class PortalsList extends Component {
     constructor(props) {
         super(props);
         this.retrievePortals = this.retrievePortals.bind(this);
         this.setActivePortal = this.setActivePortal.bind(this);
+        this.nextPath = this.nextPath.bind(this);
         this.state = {
             portals: [],
             currentportal: null,
@@ -36,28 +38,37 @@ class PortalsList extends Component {
             currentportal: portal,
             currentindex: index
         })
+        this.props.history.push("/portals/"+ portal.id)
         console.log(portal)
     }
+
+    nextPath(path) {
+        this.props.history.push(path);
+      }
 
     render() {
         const { portals } = this.state
         console.log(portals)
         return (
-            <div>
+            <List component="nav" aria-label="secondary mailbox folders">
                 {
                     portals &&
                     portals.map((portal, index) => (
-                        <div
-                            // className={index === currentindex ? "active" : ""}
+                        <ListItem button
                             onClick={() => this.setActivePortal(portal, index)}
                             key={index}
                         >
-                            <Link to={"/portals/" + portal.id}
-                            >{portal.job_portal}</Link>
-                        </div>
+                            <ListItemText primary={portal.job_portal}/>
+
+                            {/* <Link to={"/portals/" + portal.id}
+                            >{portal.job_portal}</Link> */}
+                        </ListItem>
                     ))
                 }
-            </div>
+                <Button variant="contained" color="primary" onClick={() => this.nextPath('/createportal') }>
+                    Create
+                </Button>
+            </List>
         )
     }
 }

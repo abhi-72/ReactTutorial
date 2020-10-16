@@ -9,17 +9,16 @@ import Dashboard from './components/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Dashboard />
-        {/* <Switch>
+      <div className="App">
+        <BrowserRouter>
+          <Dashboard />
+          {/* <Switch>
             <Route exact path={["/", "/portals"]} component={PortalsList} />
             <Route exact path="/createportal" component={AddPortal} />
             <Route path="/portals/:id" component={Portal} />
           </Switch> */}
-      </BrowserRouter>
-    </div>
-
+        </BrowserRouter>
+      </div>
   )
 }
 

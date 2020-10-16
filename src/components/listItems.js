@@ -10,18 +10,16 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import { Link } from "react-router-dom"
-// import PortalsList from './portalslist.component';
-
 
 export const mainListItems = (
   <div>
-    <ListItem button component="portals">
-      {/* <ListItemIcon>
+    <ListItem button>
+      <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <Link to="/portals"> */}
+      <Link to="/portals">
       <ListItemText primary="Portals" />
-      {/* </Link> */}
+      </Link>
     </ListItem>
   </div>
 );

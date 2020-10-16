@@ -1,5 +1,16 @@
+import { FormControl, InputLabel, Button, MenuItem, Select, TextField, makeStyles } from '@material-ui/core';
 import React, { Component } from 'react'
 import PortalDataService from '../services/portal.service'
+
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//       '& > *': {
+//         margin: theme.spacing(1),
+//         width: '25ch',
+//       },
+//     },
+//   }));
+
 
 class Portal extends Component {
     constructor(props) {
@@ -13,7 +24,7 @@ class Portal extends Component {
             id: null,
             job_portal: "",
             status: "",
-            company_id : null
+            company_id: ""
         }
     }
 
@@ -65,6 +76,22 @@ class Portal extends Component {
             })
     }
 
+    useStyles() {
+        return makeStyles((theme) => ({
+            root: {
+                '& > *': {
+                    margin: theme.spacing(1),
+                    width: '25ch',
+                },
+            },
+            formControl: {
+                margin: theme.spacing(1),
+                minWidth: 120,
+            }
+        }));
+    }
+
+
     render() {
         var companies = [
             {
@@ -76,58 +103,45 @@ class Portal extends Component {
                 "name": "Company2"
             },
         ]
+        const classes = this.useStyles()
         return (
-            <div>
-                {/* // <div className="edit-form"> */}
-                <div>
-                    <h4>Job Portal</h4>
-                    <form>
-                        {/* <div className="form-group"> */}
-                        <div>
-                            <span>Name: </span>
-                            {/* <label htmlFor="title">Name</label> */}
-                            <input
-                                type="text"
-                                // className="form-control"
-                                id="jobportal"
-                                value={this.state.job_portal}
-                                onChange={this.onChangeJobPortal}
-                            />
-                        </div>
-                        {/* <div className="form-group"> */}
-                        <div>
-                            {/* <label htmlFor="description">Description</label> */}
-                            <span>Status: </span>
-                            <input
-                                type="text"
-                                // className="form-control"
-                                id="status"
-                                value={this.state.status}
-                                onChange={this.onChangeStatus}
-                            />
-                        </div>
-                        <div>
-                            <label>Company: </label>
-                            <select onChange={this.onChangeCompany} value={this.state.company_id} >
-                                {
-                                    companies &&
-                                    companies.map(company => (    
-                                    <option key={company.id} value={company.id}>{company.name}</option>
-                                    ))
-                                }
-                            </select>
-                        </div>
-                    </form>
-                    <button
-                        type="submit"
-                        // className="badge badge-success"
-                        onClick={this.updatePortal}
-                    >
-                        Update
-                </button>
-                    {/* <p>{this.state.message}</p> */}
-                </div>
-            </div>
+            <FormControl className={classes.formControl} noValidate autoComplete="off">
+                <TextField 
+                    id="standard-basic"
+                    name="portal"
+                    label="Job portal"
+                    value={this.state.job_portal} 
+                    onChange={this.onChangeJobPortal} />
+                {/* <InputLabel id="demo-simple-select-label" name="status">Status</InputLabel> */}
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="status"
+                    value={this.state.status}
+                    onChange={this.onChangeStatus}
+                >
+                    <MenuItem value={"A"}>Active</MenuItem>
+                    <MenuItem value={"I"}>Inactive</MenuItem>
+                </Select>
+                {/* <InputLabel id="demo-simple-select-label" name="company">Company</InputLabel> */}
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="company"
+                    value={this.state.company_id}
+                    onChange={this.onChangeCompany}
+                >
+                    {
+                        companies &&
+                        companies.map(company => (
+                            <MenuItem key={company.id} value={company.id}>{company.name}</MenuItem>
+                        ))
+                    }
+                </Select>
+                <Button size="medium" variant="contained" color="primary" onClick={this.updatePortal}>
+                    Update
+                        </Button>
+            </FormControl>
         );
     }
 }

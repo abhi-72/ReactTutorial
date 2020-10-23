@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PortalDataService from '../services/portal.service'
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { Button, List, ListItem, ListItemText } from '@material-ui/core';
 
 class PortalsList extends Component {

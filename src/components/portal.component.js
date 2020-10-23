@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, Button, MenuItem, Select, TextField, makeStyles } from '@material-ui/core';
+import { FormControl, Button, MenuItem, Select, TextField, makeStyles } from '@material-ui/core';
 import React, { Component } from 'react'
 import PortalDataService from '../services/portal.service'
 

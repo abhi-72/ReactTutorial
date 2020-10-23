@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import PortalsList from './components/portalslist.component';
-import AddPortal from './components/addportal.component';
-import Portal from './components/portal.component';
+import { BrowserRouter } from "react-router-dom";
+// import PortalsList from './components/portalslist.component';
+// import AddPortal from './components/addportal.component';
+// import Portal from './components/portal.component';
 import Dashboard from './components/Dashboard';
 
 
